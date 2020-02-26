@@ -1,0 +1,55 @@
+enfants_index:
+    path:     /
+    defaults: { _controller: "EnfantsBundle:Enfants:index" }
+    methods:  [GET, POST]
+
+enfants_show:
+    path:     /{id}/show
+    defaults: { _controller: "EnfantsBundle:Enfants:show" }
+    methods:  GET
+
+enfants_new:
+    path:     /new
+    defaults: { _controller: "EnfantsBundle:Enfants:new" }
+    methods:  [GET, POST]
+
+enfants_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EnfantsBundle:Enfants:edit" }
+    methods:  [GET, POST]
+
+enfants_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EnfantsBundle:Enfants:delete" }
+    methods:  DELETE
+
+
+
+enfants_ajouterEnfants:
+    path:     /ajouterEnfants
+    defaults: { _controller: EnfantsBundle:Enfants:ajouterEnfants }
+enfants_index2:
+    path:     /index2
+    defaults: { _controller: EnfantsBundle:Enfants:index2 }
+enfants_supprimerEnfants:
+    path:     /supprimerEnfants/{id}
+    defaults: { _controller: EnfantsBundle:Enfants:supprimerEnfants }
+enfants_modifierEnfants:
+    path:     /modifierEnfants/{id}
+    defaults: { _controller: EnfantsBundle:Enfants:modifierEnfants }
+enfants_voirEnfants:
+    path:     /voirEnfants/{id}
+    defaults: { _controller: EnfantsBundle:Enfants:voirEnfants }
+enfants_rechercherByNom:
+    path:     /rechercherByNom
+    defaults: { _controller: EnfantsBundle:Enfants:rechercherByNom }
+enfants_ob:
+    path:     /ob
+    defaults: { _controller: EnfantsBundle:Enfants:ob }
+
+enfants_ob2:
+    path:     /ob2
+    defaults: { _controller: EnfantsBundle:Enfants:ob2 }
+
+
+

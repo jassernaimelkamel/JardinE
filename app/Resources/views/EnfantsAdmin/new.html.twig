@@ -1,0 +1,73 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block headF %}
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-midnight-bloom">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Enfants</div>
+                        <div class="widget-subheading">Liste</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{nbr_tt}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-arielle-smile">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Classe</div>
+                        <div class="widget-subheading">Liste</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{nbr_classe}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-grow-early">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Parent</div>
+                        <div class="widget-subheading">Liste</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{ nbr_parent }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-premium-dark">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Products Sold</div>
+                        <div class="widget-subheading">Revenue streams</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-warning"><span>$14M</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <center>
+    <h1>Enfant creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('enfants_index2') }}">Back to the list</a>
+        </li>
+    </ul>
+    </center>
+{% endblock %}
