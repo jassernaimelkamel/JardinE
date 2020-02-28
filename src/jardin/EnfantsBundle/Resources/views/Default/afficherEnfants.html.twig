@@ -18,7 +18,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+
         <h1> Recherher un Enfant par nom </h1>
+
         <form method="POST">
             <input type="text" name="nom">
             <input type="submit" name="rechercherByNom">
@@ -29,7 +31,7 @@
 </header>
 <main role="main">
 
-    <table class="table table-dark">
+    <table class="table table-dark" border="1" id="myTable">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nom</th>
@@ -69,5 +71,6 @@
     typeof $().modal == 'function'  || document.write(unescape('%3Cscript src="/bootstrap.min.js">%3C/script>'))
     //]]>
 </script>
+
 </body>
 </html>

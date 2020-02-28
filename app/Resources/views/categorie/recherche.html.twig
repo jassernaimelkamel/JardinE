@@ -1,0 +1,33 @@
+{% extends'baseAdmin.html.twig' %}
+{% block headF %}
+<div style="margin-left: 550px">
+    <h1>Categories Recherche</h1>
+
+    <form method="post">
+        <input type="text" name="box">
+        <input type="submit" value="recherche">
+    </form>
+
+    <table border="3">
+        <h1>Liste des catégorie</h1>
+        <tr>
+            <th>id</th>
+            <th>Nomcategorie</th>
+            <th>Description</th>
+
+
+
+        </tr>
+
+            <tr>
+                <td>{{categorie.id}}</td>
+                <td>{{categorie.nomCategorie}}</td>
+                <td>{{categorie.description}}</td>
+                <td><a href="{{path('categorie_delete',{'id':categorie.id}) }}"><button>SUPPRIMER</button></a></td>
+                <td><a href="{{path('categorie_edit',{'id':categorie.id}) }}"><button>MODIFIER</button></a></td>
+
+            </tr>
+
+
+    </table>
+    {% endblock %}

@@ -44,6 +44,16 @@
       <path value="$PROJECT_DIR$/vendor/ob/highcharts-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-json" />
+      <path value="$PROJECT_DIR$/vendor/vendor/twig" />
+      <path value="$PROJECT_DIR$/vendor/vendor/psr" />
+      <path value="$PROJECT_DIR$/vendor/vendor/symfony" />
+      <path value="$PROJECT_DIR$/vendor/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/vendor/knplabs" />
+      <path value="$PROJECT_DIR$/vendor/vendor/bin" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />

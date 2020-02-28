@@ -1,0 +1,42 @@
+{% extends'baseAdmin.html.twig' %}
+
+{% block headF %}
+<div style="margin-left: 550px">
+    <h1>Categorie</h1>
+
+    <table class="table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ categorie.photo }}</td>
+            </tr>
+            <tr>
+                <th>Nomcategorie</th>
+                <td>{{ categorie.nomCategorie }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorie.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="mb-2 mr-2 btn btn-success" href="{{ path('categorie_index', { 'id': categorie.id }) }}">Retour a la liste</a>
+        </li>
+        <li>
+            <a class="mb-2 mr-2 btn btn-alternate" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <a> <input class="mb-2 mr-2 btn btn-danger" type="submit" value="Delete" /> </a>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

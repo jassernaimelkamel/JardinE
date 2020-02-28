@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/knplabs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/psr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/symfony" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vendor/twig" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="highcharts" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="exporting" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

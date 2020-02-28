@@ -1,0 +1,46 @@
+{% extends'baseAdmin.html.twig' %}
+
+{% block headF %}
+<div style="margin-left: 550px">
+    <h1>Animateur</h1>
+
+    <table class="table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ animateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ animateur.photo }}</td>
+            </tr>
+            <tr>
+                <th>Nomanimateur</th>
+                <td>{{ animateur.nomAnimateur }}</td>
+            </tr>
+            <tr>
+                <th>Cinanimateur</th>
+                <td>{{ animateur.cinAnimateur }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissance</th>
+                <td>{% if animateur.dateNaissance %}{{ animateur.dateNaissance|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="mb-2 mr-2 btn btn-success" href="{{ path('animateur_index', { 'id': animateur.id }) }}">Retour a la liste</a>
+        </li>
+        <li>
+            <a class="mb-2 mr-2 btn btn-alternate" href="{{ path('animateur_edit', { 'id': animateur.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <a> <input class="mb-2 mr-2 btn btn-danger" type="submit" value="Delete" /> </a>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+{% endblock %}

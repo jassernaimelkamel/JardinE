@@ -133,6 +133,7 @@ class EnfantsController extends Controller
     public function ajouterEnfantsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
         $enfants_totale = $em->getRepository("EnfantsBundle:Enfants")->findAll();
 
         $classe = $em->getRepository("classeBundle:Classe")->findAll();
@@ -238,7 +239,7 @@ class EnfantsController extends Controller
             $enfant = $em->getRepository("EnfantsBundle:Enfants")->rechercherEnfantsParNom2($nom);
 //            var_dump($enfant);
             return $this->render(":EnfantsAdmin:index.html.twig",array('enfants'=>$enfant,'nbr_boy'=>$nbr_boy,'nbr_girl'=>$nbr_girl,'boy'=>$boy,'girl'=>$girl,'nbr_tt'=>$nbr_totale
-            ,'nbr_parent'=>$nbre_parents,'nbr_classe'=>$nbr_classe));
+            ,'nbr_parent'=>$nbre_parents,'nbr_classe'=>$nbr_classe,'chart' => $ob));
         }
         $enfants = $em->getRepository("EnfantsBundle:Enfants")->findAll();
         return $this->render(":EnfantsAdmin:index.html.twig",array('enfants'=>$enfants,'nbr_boy'=>$nbr_boy,'nbr_girl'=>$nbr_girl,'boy'=>$boy,'girl'=>$girl,'nbr_tt'=>$nbr_totale

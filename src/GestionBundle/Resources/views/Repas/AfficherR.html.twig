@@ -1,0 +1,48 @@
+{% extends"baseAdmin.html.twig" %}
+{% block content %}
+
+
+    <div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Liste des menus</h1>
+        </div>
+        <div class="panel-body">
+            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+            <br>
+    <table class="table">
+        <thead class="thead-light">
+
+        <a href="{{path('Ajouter_Repas')}}"><button type="button" class="btn btn-primary">Nouveau</button></a>
+        <a href="{{path('Imprimer_Abonnement')}}"><button type="button" class="btn btn-secondary">Telecharger</button></a>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">MENUS</th>
+            <th scope="col">TYPES</th>
+            <th scope="col">PHOTOS</th>
+            <th scope="col">Supprimer</th>
+            <th scope="col">Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for Repas in Repas %}
+        <tr>
+            <th scope="row">3</th>
+            <td>{{Repas.nomMenu}}</td>
+            <td>{{Repas.type}}</td>
+            <td>{{Repas.photo}}</td>
+            <td><a href="{{path('Supprimer_Repas',{'id':Repas.id}) }}"><button type="button" class="btn btn-danger">SUPPRIMER</button></a></td>
+            <td><a href="{{path('Modifier_Repas',{'id':Repas.id}) }}"><button type="button" class="btn btn-primary">MODIFIER</button></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+{% endblock %}

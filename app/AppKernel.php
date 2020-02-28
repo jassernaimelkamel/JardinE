@@ -23,6 +23,13 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new jardin\AdminBundle\AdminBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new GestionBundle\GestionBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new ActiviteBundle\ActiviteBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+
+
 
         ];
 

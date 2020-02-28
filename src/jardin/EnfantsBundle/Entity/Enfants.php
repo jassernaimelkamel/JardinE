@@ -56,6 +56,12 @@ class Enfants
      */
     private $medecinNumero;
 
+
+    /**
+     * @return string
+     */
+
+
     /**
      * @ORM\ManyToOne(targetEntity="jardin\ClasseBundle\Entity\Classe")
      * @ORM\JoinColumn(name="id_classe",referencedColumnName="id",onDelete="CASCADE",nullable=true)

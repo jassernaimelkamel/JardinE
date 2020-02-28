@@ -98,7 +98,7 @@
         }
     </style>
     <center>
-    <h1>Enfants list</h1>
+        <h1>Enfants list</h1>
 
         <h6> Recherher un Enfant </h6>
         <form method="POST">
@@ -107,8 +107,8 @@
 
         </form><br>
 
-    <table>
-        <thead>
+        <table>
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
@@ -121,40 +121,40 @@
                 <th>Classe</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for enfant in enfants %}
-            <tr>
-                <td><a href="">{{ enfant.id }}</a></td>
-                <td>{{ enfant.nom }}</td>
-                <td>{{ enfant.prenom }}</td>
-                <td>{{ enfant.sexe }}</td>
-                <td>{{ enfant.lieuNaissance }}</td>
-                <td>{% if enfant.dateNaissance %}{{ enfant.dateNaissance|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ enfant.medecin }}</td>
-                <td>{{ enfant.medecinNumero }}</td>
-                <td>{{ enfant.idClasse }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('enfants_voirEnfants', { 'id': enfant.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('enfants_modifierEnfants', { 'id': enfant.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for enfant in enfants %}
+                <tr>
+                    <td><a href="">{{ enfant.id }}</a></td>
+                    <td>{{ enfant.nom }}</td>
+                    <td>{{ enfant.prenom }}</td>
+                    <td>{{ enfant.sexe }}</td>
+                    <td>{{ enfant.lieuNaissance }}</td>
+                    <td>{% if enfant.dateNaissance %}{{ enfant.dateNaissance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ enfant.medecin }}</td>
+                    <td>{{ enfant.medecinNumero }}</td>
+                    <td>{{ enfant.idClasse }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('enfants_voirEnfants', { 'id': enfant.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('enfants_modifierEnfants', { 'id': enfant.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
 
-    <ul>
-        <li>
-            <a href="{{ path('enfants_ajouterEnfants') }}">Create a new enfant</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('enfants_ajouterEnfants') }}">Create a new enfant</a>
+            </li>
+        </ul>
     </center>
 
 

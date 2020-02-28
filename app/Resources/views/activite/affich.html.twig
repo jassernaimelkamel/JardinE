@@ -1,0 +1,56 @@
+{% extends'baseAdmin.html.twig' %}
+
+{% block headF %}
+    <div style="margin-left: 550px">
+        <h1>Activites list</h1>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Time start</th>
+                <th>Time end</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for activite in activites %}
+                <tr>
+                    <td><a href="{{ path('activite_show', { 'id': activite.id }) }}">{{ activite.id }}</a></td>
+                    <td>{{ activite.photo }}</td>
+                    <td>{{ activite.nomActivite }}</td>
+                    <td>{% if activite.dateActivite %}{{ activite.dateActivite|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if activite.timeStart %}{{ activite.timeStart|date('H:i:s') }}{% endif %}</td>
+                    <td>{% if activite.timeEnd %}{{ activite.timeEnd|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ activite.description }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="mb-2 mr-2 btn btn-info" onclick="window.print();"><i class="mdi mdi-printer btn-icon-append"></i>Imprimer</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(activites) }}
+        </div>
+        <div>
+            {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+            <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+        </div>
+    </div>
+{% endblock %}

@@ -1,3 +1,24 @@
+activite:
+    resource: "@ActiviteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+activite_categorie:
+    resource: "@ActiviteBundle/Controller/CategorieController.php"
+    type:     annotation
+
+activite_animateur:
+    resource: "@ActiviteBundle/Controller/AnimateurController.php"
+    type:     annotation
+
+activite_activite:
+    resource: "@ActiviteBundle/Controller/ActiviteController.php"
+    type:     annotation
+
+
+gestion:
+    resource: "@GestionBundle/Resources/config/routing.yml"
+    prefix:   /Gestion
+
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /Admin
@@ -21,3 +42,5 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+

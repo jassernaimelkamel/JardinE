@@ -20,7 +20,10 @@
     =========================================================
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
-    <link href="{{ asset('Admin/assets/css/main.css') }}" rel="stylesheet"></head>
+    <link href="{{ asset('Admin/assets/css/main.css') }}" rel="stylesheet">
+
+
+</head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
     <div class="app-header header-shadow">
@@ -477,11 +480,80 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-icons.html">
-                                        <i class="metismenu-icon">
-                                        </i>Statistiques
+                                    <a href="{{ path('Liste_Repas') }}">
+                                        <i class="metismenu-icon"></i>
+                                        Menus
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ path('Liste_Abonnements') }}">
+                                        <i class="metismenu-icon"></i>
+                                        Abonnements
+                                    </a>
+                                </li>
+                                <li class="app-sidebar__heading">Gestion Activites</li>
+                                <li
+                                >
+                                    <ul
+                                    >
+                                        <li>
+                                            <a href="{{path('activite_new')}}">
+                                                <i class="metismenu-icon"></i>
+                                                Ajouter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('activite_index')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Afficher
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="app-sidebar__heading">Gestion Categorie</li>
+
+                                <li
+                                >
+                                    <ul
+                                    >
+                                        <li>
+                                            <a href="{{path('categorie_new')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Ajouter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('categorie_index')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Afficher
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="app-sidebar__heading">Gestion Animateur</li>
+
+                                <li
+                                >
+                                    <ul
+                                    >
+                                        <li>
+                                            <a href="{{path('animateur_new')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Ajouter
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('animateur_index')}}">
+                                                <i class="metismenu-icon">
+                                                </i>Afficher
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
                                 <li>
 
                             </ul>
@@ -495,7 +567,7 @@
 
 
 
-                        </li>
+                    </li>
                     </ul>
                 </div>
             </div>
@@ -573,7 +645,7 @@
 
 
 
-{% block content %}{% endblock %}
+                {% block content %}{% endblock %}
 
 
                 <div class="app-wrapper-footer">

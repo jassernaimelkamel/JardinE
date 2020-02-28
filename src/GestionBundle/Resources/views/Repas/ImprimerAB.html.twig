@@ -1,0 +1,21 @@
+<h1 style="text-align: center;" >Liste Des Menus</h1>
+{% for Repas in Repas %}
+
+<div>
+    <p style="background-color: #0d8ecf; margin-top: -10px;" >Image : </p><br>
+    <div><img width="800" height="300" style="margin-left: 500px; margin-top: -20px;" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('uploads/Repas/' ~ Repas.photo) }}" ></div>
+    <p style="font-size: 50px; margin-top: -200px;"><strong>{{Repas.nomMenu}}</strong></p>
+    <p style="font-size: 30px;">{{Repas.type}}</p>
+    <canvas id="myCanvas" width="300" height="200"/>
+</div>
+{% endfor %}
+<script>
+    document.getElementById("dinamic-content").innerHTML = 'This string has been appended using javascript';
+
+    // Draw circle on canvas
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(100,75,50,0,2*Math.PI);
+    ctx.stroke();
+</script>

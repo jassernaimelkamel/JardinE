@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Skeleton</title>
+    <link  rel = "stylesheet"  href ="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" >
+</head>
+<! - zone de saisie de recherche ->
+<formulaire >
+<div  class = "form-group input-group" >
+<input  type = "text"  id = "search_location"  class = "form-control"  placeholder = "Emplacement de recherche" >
+<div  class = "input-group-btn" >
+<button class = "btn btn-default get_map"  type = "submit">
+Localiser
+</bouton >
+</div >
+</div >
+</formulaire >
+
+<! - afficher google map ->
+<div  id = "geomap" > </div >
+
+<! - afficher les informations sur l'emplacement sélectionné ->
+<h4> Détails sur l'emplacement </h4 >
+<div class="well">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {{ form_errors(form) }}
+
+    <div class= "search_addr" >
+        {{ form_label(form.address, "address", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.address) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.locality, "locality", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.locality) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.country, "country", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.country) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="search_latitude">
+        {{ form_label(form.lat, "lat", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.lat) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.lat, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="search_longitude">
+        {{ form_label(form.lng, "lng", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.lng) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.lng, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {{ form_rest(form) }}
+
+    {{ form_end(form) }}
+</div>
+<script>
+    var geocoder;
+    var map;
+    var marker;
+
+    /*
+     * Google Map with marker
+     */
+    function initialize() {
+        var initialLat = $('.search_latitude').val();
+        var initialLong = $('.search_longitude').val();
+        initialLat = initialLat?initialLat:36.169648;
+        initialLong = initialLong?initialLong:-115.141000;
+
+        var latlng = new google.maps.LatLng(initialLat, initialLong);
+        var options = {
+            zoom: 16,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("geomap"), options);
+
+        geocoder = new google.maps.Geocoder();
+
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: latlng
+        });
+
+        google.maps.event.addListener(marker, "dragend", function () {
+            var point = marker.getPosition();
+            map.panTo(point);
+            geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    marker.setPosition(results[0].geometry.location);
+                    $('.search_addr').val(results[0].formatted_address);
+                    $('.search_latitude').val(marker.getPosition().lat());
+                    $('.search_longitude').val(marker.getPosition().lng());
+                }
+            });
+        });
+
+    }
+
+    $(document).ready(function () {
+        //load google map
+        initialize();
+
+        /*
+         * autocomplete location search
+         */
+        var PostCodeid = '#search_location';
+        $(function () {
+            function initMap() {
+                var myLatLng = {lat: 36.8762039 , lng: 10.2375933 };
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 8,
+                    center: myLatLng
+                });
+
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: 'Hello World!'
+                });
+
+            $(PostCodeid).autocomplete({
+                source: function (request, response) {
+                    geocoder.geocode({
+                        'address': request.term
+                    }, function (results, status) {
+                        response($.map(results, function (item) {
+                            return {
+                                label: item.formatted_address,
+                                value: item.formatted_address,
+                                lat: item.geometry.location.lat(),
+                                lon: item.geometry.location.lng()
+                            };
+                        }));
+                    });
+                },
+                select: function (event, ui) {
+                    $('.search_addr').val(ui.item.value);
+                    $('.search_latitude').val(ui.item.lat);
+                    $('.search_longitude').val(ui.item.lon);
+                    var latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
+                    marker.setPosition(latlng);
+                    initialize();
+                }
+            });
+        });
+
+        /*
+         * Point location on google map
+         */
+        $('.get_map').click(function (e) {
+            var address = $(PostCodeid).val();
+            geocoder.geocode({'address': address}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    marker.setPosition(results[0].geometry.location);
+                    $('.search_addr').val(results[0].formatted_address);
+                    $('.search_latitude').val(marker.getPosition().lat());
+                    $('.search_longitude').val(marker.getPosition().lng());
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+            e.preventDefault();
+        });
+
+        //Add listener to marker for reverse geocoding
+        google.maps.event.addListener(marker, 'drag', function () {
+            geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        $('.search_addr').val(results[0].formatted_address);
+                        $('.search_latitude').val(marker.getPosition().lat());
+                        $('.search_longitude').val(marker.getPosition().lng());
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<script  src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" > </script >
+<script  type = "text / javascript"  src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA4EfSDouWFE0bFohpHnM-L5KzBV8LYBBw" > </ script >
+
+<script  src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" > </script >
+</html>

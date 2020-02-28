@@ -1,0 +1,12 @@
+{% extends'baseAdmin.html.twig' %}
+
+{% block headF %}
+<div style="margin-left: 550px">
+    <h1>Categorie creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <a> <input class="btn btn-success" type="submit" value="Ajouter" /> </a>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
